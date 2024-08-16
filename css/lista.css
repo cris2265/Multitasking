@@ -49,7 +49,7 @@
     justify-content: center;
     align-items: center;
     font-size: 4rem;
-    font-family: "Caveat", cursive;
+    font-family: "Cave0at", cursive;
 }
 .emoji {
     grid-column: 6/7;
@@ -113,23 +113,38 @@
 .lista {
     grid-column: 1/6;
     grid-row: 2/3;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .asignado {
     grid-column: 6/7;
     grid-row: 2/3;
     border-left: 3px dotted gray;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .fecha {
     grid-column: 7/9;
     grid-row: 2/3;
     border-left: 3px dotted gray;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .estado {
     grid-column: 9/11;
     grid-row: 2/3;
     border-left: 3px dotted gray;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
@@ -145,15 +160,22 @@
     margin: 5% auto;
     padding: 2rem;
     border: 1px solid #888;
-    width: 50%;
-    height: 50rem;
+    width: 30%;
+    height: 40rem;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: repeat(10, 1fr);
+
 }
 
 .close {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    grid-column: 4/5;
+    grid-row: 1/2;   
+    justify-self: center;
+    align-self: center; 
 }
 
 .close:hover,
@@ -161,4 +183,96 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+.nombre_tarea {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+    border: none;
+    border: 1px solid black;
+    height: 100%;
+    border-radius: 5px;
+    font-family: "Caveat", cursive;
+}
+.nombre_tarea::placeholder {
+    font-family: "Caveat", cursive;
+    text-align: center;
+    font-size: 2rem;
+}
+.nombre_usuario {
+    grid-column: 2/4;
+    grid-row: 4/5;
+    width: 90%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    border: none;
+    border: 1px solid black;
+    height: 100%;
+    border-radius: 5px;
+    font-family: "Caveat", cursive;
+}
+.nombre_usuario::placeholder {
+    font-family: "Caveat", cursive;
+    text-align: center;
+    font-size: 2rem;
+}
+.date {
+    grid-column: 2/4;
+    grid-row: 6/7;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+    border: none;
+    border: 1px solid black;
+    height: 100%;
+    border-radius: 5px;
+    font-family: "Caveat", cursive;
+}
+.date::placeholder {
+    font-family: "Caveat", cursive;
+    font-size: 2rem;
+}
+.agregar {
+    grid-column: 2/4;
+    grid-row: 10/11;
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    font-size: 2rem;
+}
+.estate {
+    grid-column: 2/4;
+    grid-row: 8/9;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    border: none;
+    border: 1px solid black;
+    font-size: 2rem;
+    font-family: "Caveat", cursive;
+    border-radius: 5px;
+}
+.tareahecha {
+    border: 2px solid rgba(0, 0, 0, 0.367);
+    font-size: 2rem;
+    border-radius: 5px;
+}
+.usuarioasignado {
+    border: 2px solid rgba(0, 0, 0, 0.367);
+    font-size: 2rem;
+    border-radius: 5px;
+}
+.fechalista {
+    border: 2px solid rgba(0, 0, 0, 0.367);
+    font-size: 2rem;
+    border-radius: 5px;
+}
+.estadolisto {
+    border: 2px solid rgba(0, 0, 0, 0.367);
+    font-size: 2rem;
+    border-radius: 5px;
 }
