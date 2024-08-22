@@ -1,7 +1,7 @@
 import { guardarAsignaciones, obtenerAsignaciones } from "./Storage.js";
 
 guardarAsignaciones
-let lista = document.querySelector(".tareas")
+export let lista = document.querySelector(".tareas")
 
 lista.innerHTML = `
     <div class="header">
@@ -162,4 +162,20 @@ document.addEventListener("DOMContentLoaded", function() {
         inputFecha.value = "";
         selectEstado.selectedIndex = 0;
     });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener el nombre del usuario desde localStorage
+    let nombreUsuario = localStorage.getItem("nombreUsuario");
+    
+    if (nombreUsuario) {
+        // Obtener la letra inicial del nombre del usuario
+        let inicial = nombreUsuario.charAt(0).toUpperCase();
+        
+        // Cambiar el contenido del div con la letra inicial
+        let userDiv = document.querySelector(".emoji");
+        if (userDiv) {
+            userDiv.textContent = inicial;
+        }
+    }
 });

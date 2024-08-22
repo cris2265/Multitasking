@@ -1,10 +1,10 @@
-import { contra } from "./database.js";
+import { contra } from "./database.js"; // Importa el array de credenciales
 
 let root = document.querySelector(".root");
 
 root.innerHTML = `
     <header class="hed">
-        <a href="#" class="git">Github</a>
+        <a href="https://github.com/cris2265" class="git">Github</a>
     </header>
     <div class="fondobl">
         <div class="login">
@@ -24,10 +24,65 @@ root.innerHTML = `
             </div>
         </div>
     </div>
+
+    <!-- Modal de Crear Cuenta -->
+    <div class="modal-crear-cuenta" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Crear Cuenta</h2>
+            <input type="email" placeholder="Correo" class="nuevo-email">
+            <input type="password" placeholder="Contraseña" class="nuevo-password">
+            <input type="password" placeholder="Confirmar Contraseña" class="confirmar-password">
+            <button class="crear-cuenta-btn">Crear Cuenta</button>
+        </div>
+    </div>
 `;
 
 document.querySelector(".beta").addEventListener("click", function() {
-    
-    // Redirigir a una nueva página
     window.location.href = 'index_2.html';
+});
+
+document.querySelector(".iniciar").addEventListener("click", function() {
+    let email = document.querySelector(".email").value;
+    let password = document.querySelector(".password").value;
+
+    let user = contra.find(user => user.email === email && user.password === password);
+
+    if (user) {
+        // Guardar el nombre del usuario en localStorage
+        localStorage.setItem("nombreUsuario", user.nombre);
+        window.location.href = 'index_3.html';
+    } else {
+        alert("Correo o contraseña incorrectos. Inténtalo de nuevo.");
+    }
+});
+
+document.querySelector(".crear").addEventListener("click", function() {
+    document.querySelector(".modal-crear-cuenta").style.display = "flex";
+});
+
+document.querySelector(".close-modal").addEventListener("click", function() {
+    document.querySelector(".modal-crear-cuenta").style.display = "none";
+});
+
+document.querySelector(".crear-cuenta-btn").addEventListener("click", function() {
+    let nuevoEmail = document.querySelector(".nuevo-email").value;
+    let nuevoPassword = document.querySelector(".nuevo-password").value;
+    let confirmarPassword = document.querySelector(".confirmar-password").value;
+
+    if (nuevoPassword === confirmarPassword) {
+        let nuevoUsuario = {
+            nombre: "Nuevo Usuario", // Puedes pedir al usuario que ingrese su nombre también
+            email: nuevoEmail,
+            password: nuevoPassword
+        };
+
+        // Añadir el nuevo usuario al array contra
+        contra.push(nuevoUsuario);
+
+        alert("Cuenta creada exitosamente");
+        document.querySelector(".modal-crear-cuenta").style.display = "none";
+    } else {
+        alert("Las contraseñas no coinciden. Inténtalo de nuevo.");
+    }
 });
